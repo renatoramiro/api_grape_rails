@@ -1,5 +1,8 @@
 class API < Grape::API
-  prefix 'api'
+  prefix :api
+  format :json
   version 'v1', using: :path
-  mount Employee::Data
+
+  mount Employees::Data
+  mount Topics::Data
 end

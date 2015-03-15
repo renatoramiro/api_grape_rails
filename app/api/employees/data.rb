@@ -1,9 +1,17 @@
-module Employee
+module Employees
   class Data < Grape::API
-    resource :employee do
+    resource :employees do
       desc "List all Employee"
       get do
         EmpData.all
+      end
+
+      desc "Get an employee"
+      params do
+        requires :id, type: String
+      end
+      get ':id' do
+        EmpData.find(params[:id])
       end
 
       desc "create a new employee"
